@@ -15,7 +15,9 @@ dockerfile="$4"
 # Debug mode on/off (does not push images)
 debug="$5"
 
-# create temp dockerfile
+# Create temporary dockerfile
+mkdir -p tmp
+
 tmpDockerfile="tmp/Dockerfile"
 cp $dockerfile $tmpDockerfile
 
