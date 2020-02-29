@@ -13,11 +13,7 @@ php:7.4-fpm:
   services:
     - docker:dind
   script:
-    - ./build.sh \
-    -   php:7.4-fpm-alpine \    # from
-    -   liteacz/php:7.4-fpm \   # tag
-    -   fpm \                   # context
-    -   fpm/base/Dockerfile     # dockerfile
+    - ./build.sh php:7.4-fpm-alpine liteacz/php:7.4-fpm fpm fpm/base/Dockerfile
   only:
     - tags
     - web
@@ -29,11 +25,7 @@ php:7.4-fpm-build:
   services:
     - docker:dind
   script:
-    - ./build.sh \
-    -   liteacz/php:7.4-fpm \
-    -   liteacz/php:7.4-fpm-build \
-    -   fpm \
-    -   fpm/build/Dockerfile
+    - ./build.sh liteacz/php:7.4-fpm liteacz/php:7.4-fpm-build fpm fpm/build/Dockerfile
   only:
     - tags
     - web
@@ -45,11 +37,7 @@ php:7.4-fpm-dev:
   services:
     - docker:dind
   script:
-    - ./build.sh \
-    -   liteacz/php:7.4-fpm-build \
-    -   liteacz/php:7.4-fpm-dev \
-    -   fpm \
-    -   fpm/dev/Dockerfile
+    - ./build.sh liteacz/php:7.4-fpm-build liteacz/php:7.4-fpm-dev fpm fpm/dev/Dockerfile
   only:
     - tags
     - web
