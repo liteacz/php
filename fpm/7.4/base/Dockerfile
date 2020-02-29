@@ -7,9 +7,13 @@ FROM $PARENT_IMAGE
 # such as COPY and ADD.
 
 RUN echo "Creating data directory " \
-    && mkdir -m 0755 -p /var/www/data \
-    && echo "Creating scripts directory" \
-    && mkdir -p /var/www/scripts
+    && mkdir -m 0755 -p /var/www/data
+
+RUN echo "Creating init_scripts directory" \
+    && mkdir -m 0755 -p /var/www/init_scripts
+
+RUN echo "Creating scripts directory" \
+    && mkdir -m 0755 -p /var/www/scripts
 
 COPY base/scripts /var/www/scripts/
 
