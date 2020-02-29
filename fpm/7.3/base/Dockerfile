@@ -37,7 +37,7 @@ RUN echo "Installing required system libraries and php extensions" \
     && apk del --no-cache .build-deps
 
 RUN echo "Setting up working directory" \
-    mkdir \
+    && mkdir \
         -m 0755 \
         -p /data /scripts
 
