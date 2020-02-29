@@ -6,6 +6,13 @@ FROM $PARENT_IMAGE
 # This needs to be kept in mind when using Dockerfile directives
 # such as COPY and ADD.
 
+RUN echo "Setting up working directory" \
+    && mkdir \
+        -m 0755 \
+        -p /data /scripts
+
+COPY base/scripts /scripts/
+
 # Basic libraries
 RUN echo "Installing required system libraries and php extensions" \
     && apk add --no-cache --virtual .build-deps \
@@ -36,13 +43,6 @@ RUN echo "Installing required system libraries and php extensions" \
     && echo "Cleaning build dependencies" \
     # Cleanup
     && apk del --no-cache .build-deps
-
-RUN echo "Setting up working directory" \
-    && mkdir \
-        -m 0755 \
-        -p /data /scripts
-
-COPY base/scripts /scripts/
 
 # GD Installation in separate layer
 RUN echo "Installing GD php extension" \
