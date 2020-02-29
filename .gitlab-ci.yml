@@ -29,6 +29,7 @@ php:7.4-fpm-build:
   only:
     - tags
     - web
+  when: manual
 
 php:7.4-fpm-dev:
   stage: devImages
@@ -40,3 +41,4 @@ php:7.4-fpm-dev:
   only:
     - tags
     - web
+  when: manual
