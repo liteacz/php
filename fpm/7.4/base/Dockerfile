@@ -6,17 +6,6 @@ FROM $PARENT_IMAGE
 # This needs to be kept in mind when using Dockerfile directives
 # such as COPY and ADD.
 
-RUN echo "Creating data directory " \
-    && mkdir -m 0755 -p /var/www/data
-
-RUN echo "Creating init_scripts directory" \
-    && mkdir -m 0755 -p /var/www/init_scripts
-
-RUN echo "Creating scripts directory" \
-    && mkdir -m 0755 -p /var/www/scripts
-
-COPY base/scripts /var/www/scripts/
-
 # Basic libraries
 RUN echo "Installing required system libraries and php extensions" \
     && apk add --no-cache --virtual .build-deps \
@@ -44,6 +33,10 @@ RUN echo "Installing required system libraries and php extensions" \
         redis \
     && docker-php-ext-enable \
         redis \
+    && echo "Creating working directories" \
+    && mkdir \
+        -m 0755 \
+        -p /var/www/data /var/www/scripts \
     && echo "Cleaning build dependencies" \
     # Cleanup
     && apk del --no-cache .build-deps
@@ -64,6 +57,7 @@ RUN echo "Installing GD php extension" \
     # Cleanup
     && apk del --no-cache .build-deps
 
+COPY base/scripts /var/www/scripts/
 COPY base/php.ini /usr/local/etc/php/php.ini
 COPY base/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY base/www.conf /usr/local/etc/php/php-fpm.d/www.conf
