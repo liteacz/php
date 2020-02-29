@@ -7,11 +7,11 @@ FROM $PARENT_IMAGE
 # such as COPY and ADD.
 
 RUN echo "Creating data directory " \
-    && mkdir -m 0755 -p /data \
+    && mkdir -m 0755 -p /var/www/data \
     && echo "Creating scripts directory" \
-    && mkdir -p /scripts
+    && mkdir -p /var/www/scripts
 
-COPY base/scripts /scripts/
+COPY base/scripts /var/www/scripts/
 
 # Basic libraries
 RUN echo "Installing required system libraries and php extensions" \
@@ -64,9 +64,9 @@ COPY base/php.ini /usr/local/etc/php/php.ini
 COPY base/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY base/www.conf /usr/local/etc/php/php-fpm.d/www.conf
 
-WORKDIR /data
+WORKDIR /var/www/data
 
-COPY base/entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+COPY base/entrypoint.sh /var/www
+RUN chmod +x /var/www/entrypoint.sh
 
-CMD [ "/entrypoint.sh" ]
+CMD [ "/var/www/entrypoint.sh" ]
