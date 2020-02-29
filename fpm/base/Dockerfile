@@ -48,8 +48,9 @@ RUN echo "Installing GD php extension" \
       freetype-dev \
       libjpeg-turbo-dev \
     && docker-php-ext-configure gd \
-        --with-jpeg \
-        --with-freetype \
+        --with-freetype-dir=/usr/include/ \
+        --with-png-dir=/usr/include/ \
+        --with-jpeg-dir=/usr/include/ \
     && NPROC=$(getconf _NPROCESSORS_ONLN) \
     # PHP packages
     && docker-php-ext-install -j${NPROC} gd \

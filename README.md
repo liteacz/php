@@ -1,4 +1,4 @@
-# Litea PHP
+# Litea PHP 7.3
 > Enhanced dockerized PHP images for local, build (ci) and production usage
 
 ## Available environment variables

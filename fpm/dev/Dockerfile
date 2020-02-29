@@ -5,7 +5,7 @@ RUN \
     apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
     # PHP Xdebug
-    && pecl install xdebug-2.8.0 \
+    && pecl install xdebug-2.7.1 \
     && docker-php-ext-enable xdebug \
     # Cleanup
     && apk del .build-deps
