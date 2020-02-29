@@ -6,10 +6,10 @@ FROM $PARENT_IMAGE
 # This needs to be kept in mind when using Dockerfile directives
 # such as COPY and ADD.
 
-RUN echo "Setting up working directory" \
-    && mkdir \
-        -m 0755 \
-        -p /data /scripts
+RUN echo "Creating data directory " \
+    && mkdir -m 0755 -p /data \
+    && echo "Creating scripts directory" \
+    && mkdir -p /scripts
 
 COPY base/scripts /scripts/
 
