@@ -1,39 +1,55 @@
 stages:
-  - build
+  - baseImages
+  - buildImages
+  - devImages
 
 before_script:
   - apk add --no-cache bash
   - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_ACCESS_TOKEN
 
-php:7.3-fpm:
-  stage: build
+php:7.4-fpm:
+  stage: baseImages
   image: docker:stable
   services:
     - docker:dind
   script:
-    - echo "Building base image"
-    - ./build.sh php:7.3-fpm-alpine liteacz/php:7.3-fpm fpm/7.3 fpm/7.3/base/Dockerfile
-    - echo Building build image
-    - ./build.sh liteacz/php:7.3-fpm liteacz/php:7.3-fpm-build fpm/7.3 fpm/7.3/build/Dockerfile
-    - echo Building dev image
-    - ./build.sh liteacz/php:7.3-fpm-build liteacz/php:7.3-fpm-dev fpm/7.3 fpm/7.3/dev/Dockerfile
+    - ./build.sh \
+    -   php:7.4-fpm-alpine \    # from
+    -   liteacz/php:7.4-fpm \   # tag
+    -   fpm \                   # context
+    -   fpm/base/Dockerfile     # dockerfile
   only:
     - tags
     - web
   when: manual
 
-php:7.4-fpm:
-  stage: build
+php:7.4-fpm-build:
+  stage: buildImages
   image: docker:stable
   services:
     - docker:dind
   script:
-    - echo "Building base image"
-    - ./build.sh php:7.4-fpm-alpine liteacz/php:7.4-fpm fpm/7.4 fpm/7.4/base/Dockerfile
-    - echo "Building build image"
-    - ./build.sh liteacz/php:7.4-fpm liteacz/php:7.4-fpm-build fpm/7.4 fpm/7.4/build/Dockerfile
-    - echo "Building dev image"
-    - ./build.sh liteacz/php:7.4-fpm-build liteacz/php:7.4-fpm-dev fpm/7.4 fpm/7.4/dev/Dockerfile
+    - ./build.sh \
+    -   liteacz/php:7.4-fpm \
+    -   liteacz/php:7.4-fpm-build \
+    -   fpm \
+    -   fpm/build/Dockerfile
+  only:
+    - tags
+    - web
+  when: manual
+
+php:7.4-fpm-dev:
+  stage: devImages
+  image: docker:stable
+  services:
+    - docker:dind
+  script:
+    - ./build.sh \
+    -   liteacz/php:7.4-fpm-build \
+    -   liteacz/php:7.4-fpm-dev \
+    -   fpm \
+    -   fpm/dev/Dockerfile
   only:
     - tags
     - web

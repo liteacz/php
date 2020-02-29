@@ -1,8 +1,7 @@
 FROM $PARENT_IMAGE
 
-# The docker context is set to version directory (e.g.: 7.3)
-# that means all paths are relative to this folder
-# not the project root.
+# The docker context is set to type directory (e.g.: fpm)
+# that means all paths are relative to this folder not the project root.
 # This needs to be kept in mind when using Dockerfile directives
 # such as COPY and ADD.
 
@@ -10,6 +9,7 @@ FROM $PARENT_IMAGE
 RUN echo "Installing required system libraries and php extensions" \
     && apk add --no-cache --virtual .build-deps \
         zlib-dev \
+        oniguruma-dev \
         $PHPIZE_DEPS \
     && apk add --no-cache --virtual .persistent-deps \
         libzip-dev \
@@ -32,16 +32,13 @@ RUN echo "Installing required system libraries and php extensions" \
         redis \
     && docker-php-ext-enable \
         redis \
+    && echo "Creating working directories" \
+    && mkdir \
+        -m 0755 \
+        -p /var/www/data /var/www/scripts \
     && echo "Cleaning build dependencies" \
     # Cleanup
     && apk del --no-cache .build-deps
-
-RUN echo "Setting up working directory" \
-    && mkdir \
-        -m 0755 \
-        -p /data /scripts
-
-COPY base/scripts /scripts/
 
 # GD Installation in separate layer
 RUN echo "Installing GD php extension" \
@@ -51,22 +48,22 @@ RUN echo "Installing GD php extension" \
       freetype-dev \
       libjpeg-turbo-dev \
     && docker-php-ext-configure gd \
-        --with-freetype-dir=/usr/include/ \
-        --with-png-dir=/usr/include/ \
-        --with-jpeg-dir=/usr/include/ \
+        --with-jpeg \
+        --with-freetype \
     && NPROC=$(getconf _NPROCESSORS_ONLN) \
     # PHP packages
     && docker-php-ext-install -j${NPROC} gd \
     # Cleanup
     && apk del --no-cache .build-deps
 
+COPY base/scripts /var/www/scripts/
 COPY base/php.ini /usr/local/etc/php/php.ini
 COPY base/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY base/www.conf /usr/local/etc/php/php-fpm.d/www.conf
 
-WORKDIR /data
+WORKDIR /var/www/data
 
-COPY base/entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+COPY base/entrypoint.sh /var/www
+RUN chmod +x /var/www/entrypoint.sh
 
-CMD [ "/entrypoint.sh" ]
+CMD [ "/var/www/entrypoint.sh" ]
