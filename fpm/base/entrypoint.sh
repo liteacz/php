@@ -6,7 +6,7 @@ cd /var/www/data
 
 if [ -d $CUSTOM_SCRIPTS_PATH ]; then
   echo "Copying custom scripts"
-  cp $CUSTOM_SCRIPTS_PATH/* /var/www/scripts
+  cp "$CUSTOM_SCRIPTS_PATH/." /var/www/scripts
 fi
 
 for filename in /var/www/scripts/*.sh; do
