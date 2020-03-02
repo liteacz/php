@@ -1,10 +1,6 @@
 #!/bin/sh
 
-if [ -z $XDEBUG_EXTENSION_PATH ]; then
-    /usr/local/lib/php/extensions/no-debug-non-zts-20180731/xdebug.so
-    XDEBUG_EXTENSION_PATH=$(find /usr/local/lib/php/extensions/ -name xdebug.so)
-fi
-
+[ -z "$XDEBUG_EXTENSION_PATH" ] && XDEBUG_EXTENSION_PATH="xdebug.so"
 [ -z "$XDEBUG_ENABLE" ] && XDEBUG_ENABLE="1"
 [ -z "$XDEBUG_PORT" ] && XDEBUG_PORT="9999"
 [ -z "$XDEBUG_IDEKEY" ] && XDEBUG_IDEKEY="docker"
