@@ -63,10 +63,24 @@ services:
 Now when you call `docker-compose up -d` from within `myproject` folder you'll see something similar to:
 
 ```bash
-➜  myproject docker-compose up -d
+$ myproject docker-compose up -d
 Creating network "myproject_default" with the default driver
 Creating myproject_php-fpm_1 ... done
 Creating myproject_nginx_1   ... done
 ```
 
-If you don't have php and nginx images pulled locally, the first run will take some time to pull them. The subsequent start (`docker-compose up -d`) will be faster.
+**Note**
+
+> If you don't have php and nginx images pulled locally, the first run will take some time to pull them. The subsequent start (`docker-compose up -d`) will be faster.
+
+
+Now verify that both nginx and php-fpm containers are up and running:
+
+```bash
+$ docker ps -a
+CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                  NAMES
+bf29810d03ba        liteacz/nginx:1.17        "/var/www/entrypoint…"   2 seconds ago       Up 1 second         0.0.0.0:8000->80/tcp   myproject_nginx_1
+a70de460d91f        liteacz/php:7.4-fpm-dev   "docker-php-entrypoi…"   3 seconds ago       Up 2 seconds        9000/tcp               myproject_php-fpm_1
+```
+
+If you see "Up ..." within the "STATUS" column you should be able to navigate to [localhost:8000](http://localhost:8000) and see the "Hello dockerized PHP world!" message.
