@@ -18,7 +18,7 @@ RUN \
     # Persistant libs
     apk add --no-cache \
       git \
-      openssh-client \
+      openssh-client
 
 RUN \
     echo "Checking private repository variables" \
