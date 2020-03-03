@@ -55,7 +55,6 @@ services:
   php-fpm:
     image: liteacz/php:7.4-fpm-dev
     environment:
-      UID: 1000
       FPM_ROOT_DIR: public
     volumes:
       - ./:/var/www/data
