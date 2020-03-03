@@ -22,7 +22,7 @@ This repository contains both **cli** and **fpm** versions of the [official PHP 
 
 The **fpm** image is meant to play well with our [nginx](https://github.com/liteacz/nginx), but it can be used by any other webserver that supports [fastcgi](https://en.wikipedia.org/wiki/FastCGI).
 
-For more information see the [documentation](https://github.com/liteacz/php/tree/master/fpm/base/docs) which is part of this repository in [docs](./docs) directory.
+For more information see the [documentation](./docs) which is part of this repository in [docs](./docs) directory.
 
 ## Getting started
 
