@@ -1,6 +1,13 @@
 # Enhanced dockerized PHP 🐳🐘
 > PHP images for local, build (ci) and production usage of FPM and CLI
 
+## PHP 7.4
+
+This is the latest supported PHP version.
+To read the documentation for older PHP releases see one of the ongoing branches:
+
+- [PHP 7.3](https://github.com/liteacz/php/tree/7.3)
+
 ## Documentation 📖
 
 Documentation is located in the [docs](./docs) directory of this repository.
