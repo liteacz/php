@@ -1,6 +1,11 @@
 # Enhanced dockerized PHP 🐳🐘
 > PHP images for local, build (ci) and production usage of FPM and CLI
 
+## PHP 7.3
+
+This is a documentation for image versions for PHP 7.3.
+If you want to read about the latest support version see the [master branch](https://github.com/liteacz/php)
+
 ## Documentation 📖
 
 Documentation is located in the [docs](./docs) directory of this repository.
