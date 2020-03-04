@@ -18,14 +18,8 @@ RUN echo "Installing required system libraries and php extensions" \
     && docker-php-ext-install \
         bcmath \
         calendar \
-        ctype \
-        iconv \
-        json \
-        mbstring \
         opcache \
         pdo_mysql \
-        tokenizer \
-        xml \
         zip \
     # PHP extensions via pecl
     && pecl install \

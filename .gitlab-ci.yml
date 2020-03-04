@@ -17,7 +17,6 @@ php:7.3-fpm:
   only:
     - tags
     - web
-  when: manual
 
 php:7.3-fpm-build:
   stage: buildImages
@@ -29,7 +28,6 @@ php:7.3-fpm-build:
   only:
     - tags
     - web
-  when: manual
 
 php:7.3-fpm-dev:
   stage: devImages
@@ -41,4 +39,3 @@ php:7.3-fpm-dev:
   only:
     - tags
     - web
-  when: manual

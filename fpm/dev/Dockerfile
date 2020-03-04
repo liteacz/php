@@ -12,4 +12,4 @@ RUN \
 
 COPY dev/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-COPY dev/scripts /scripts/
+COPY dev/scripts /var/www/scripts/
