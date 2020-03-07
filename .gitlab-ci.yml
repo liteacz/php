@@ -39,3 +39,36 @@ php:7.4-fpm-dev:
   only:
     - tags
     - web
+
+php:7.4-cli:
+  stage: baseImages
+  image: docker:stable
+  services:
+    - docker:dind
+  script:
+    - ./build.sh php:7.4-cli-alpine liteacz/php:7.4-cli cli cli/base/Dockerfile
+  only:
+    - tags
+    - web
+
+php:7.4-cli-build:
+  stage: buildImages
+  image: docker:stable
+  services:
+    - docker:dind
+  script:
+    - ./build.sh liteacz/php:7.4-cli liteacz/php:7.4-cli-build cli cli/build/Dockerfile
+  only:
+    - tags
+    - web
+
+php:7.4-cli-dev:
+  stage: devImages
+  image: docker:stable
+  services:
+    - docker:dind
+  script:
+    - ./build.sh liteacz/php:7.4-cli-build liteacz/php:7.4-cli-dev cli cli/dev/Dockerfile
+  only:
+    - tags
+    - web
