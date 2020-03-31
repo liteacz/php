@@ -23,8 +23,10 @@ cp $dockerfile $tmpDockerfile
 
 sed -i -e "s#\$PARENT_IMAGE#$from#g" "$tmpDockerfile"
 
+[ -z $CI_COMMIT_TAG ] && releaseVersion="$tag" || releaseVersion="$tag-$CI_COMMIT_TAG"
+
 docker build \
-    -t $tag \
+    -t $releaseVersion \
     -f $tmpDockerfile \
 $context
 
