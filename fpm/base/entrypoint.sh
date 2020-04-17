@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mkdir -p /var/www/data
 cd /var/www/data
 
 [ -z $CUSTOM_SCRIPTS_PATH ] && CUSTOM_SCRIPTS_PATH="/var/www/custom-scripts"
