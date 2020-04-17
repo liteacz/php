@@ -31,6 +31,6 @@ docker build \
 $context
 
 if [ -z $debug ]; then
-    docker push $tag
+    docker push $releaseVersion
     rm $tmpDockerfile
 fi
