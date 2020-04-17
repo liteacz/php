@@ -16,6 +16,8 @@ Documentation is located in the [docs](./docs) directory of this repository.
 
 - [About](#About)
 - [Getting started](#Getting-started)
+    - [Using FPM](#using-fpm)
+    - [Using CLI](#using-cli)
 
 ## About ℹ️
 
@@ -33,6 +35,7 @@ For more information see the [documentation](./docs) which is part of this repos
 
 ## Getting started
 
+### Using FPM
 Assuming the following project structure, here is simple `docker-compose.yml` example that shows how to use the **fpm** and [nginx](github.com/liteacz/nginx) images together for local development.
 
 ```
@@ -91,3 +94,7 @@ a70de460d91f        liteacz/php:7.4-fpm-dev   "docker-php-entrypoi…"   3 secon
 ```
 
 If you see "Up ..." within the "STATUS" column you should be able to navigate to [localhost:8000](http://localhost:8000) and see the "Hello dockerized PHP world!" message.
+
+### Using CLI
+
+TODO
