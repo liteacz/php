@@ -5,6 +5,7 @@
 - [What is FPM?](#what-is-fpm)
 - [Basic usage](#basic-usage)
 - [Not so basic usage](#not-so-basic-usage)
+- [Debugging using XDebug](#debugging-using-xdebug)
 - [Available environment variables and build arguments](#available-environment-variables-and-build-arguments)
 
 ## What is FPM?
@@ -20,6 +21,53 @@ TODO
 TODO:
 Dockerized laravel
 Usage with gitlab ci
+
+## Debugging using XDebug
+
+When dealing with larger code base the simple `echo $myVar` as a debugging tool
+is not the best one to reach for. It pretty much never is, but for many developers (myself included)
+it's been THE debugging tool for long part of their programming carriers.
+
+Dockerizing your application, fortunately, does not take this tool away.
+
+The setup is different depending on the IDE or editor you are using. Let's see how this is done
+for [PHPStorm](https://www.jetbrains.com/phpstorm/) and [VSCode](https://code.visualstudio.com/).
+
+I'll be using our example [hello dockerized world](https://github.com/liteacz/hello-dockerized-world)
+repository, so if you feel like so, grab it and work along to get rid of the `echo $myVar` debugging
+"technique".
+
+### Project structure
+
+1. Pull the repository and enter the directory
+
+        $ git pull git@github.com:liteacz/hello-dockerized-world.git
+        $ cd hello-dockerized-world
+
+2. Spin up the containers
+
+        $ docker-compose up -d
+
+3. Open the link http://localhost:8000 in your favorite web browser.
+
+4. Verify the directory contents is similar to this:
+
+        $ tree .
+        .
+        ├── app
+        │   └── Realm.php
+        ├── docker-compose.yml
+        ├── public
+        │   └── index.php
+        └── README.md
+
+### XDebug with PHPStorm
+
+To be continue...
+
+### XDebug with VSCode
+
+To be continue...
 
 ## Available environment variables and build arguments
 

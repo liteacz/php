@@ -18,6 +18,7 @@ Documentation is located in the [docs](./docs) directory of this repository.
 - [Getting started](#Getting-started)
     - [Using FPM](#using-fpm)
     - [Using CLI](#using-cli)
+- [Demo time](#demo-time)
 
 ## About ℹ️
 
@@ -97,4 +98,23 @@ If you see "Up ..." within the "STATUS" column you should be able to navigate to
 
 ### Using CLI
 
-TODO
+For starters, you might just output the php info to the terminal:
+
+```bash
+$ docker run -it --rm liteacz/php:7.4-cli-dev php -i
+phpinfo()
+PHP Version => 7.4.2
+
+System => Linux 89014fe2f832 5.3.0-46-generic #38-Ubuntu SMP Fri Mar 27 17:37:05 UTC 2020 x86_64
+Build Date => Jan 24 2020 07:10:24
+...
+```
+
+## Demo time
+
+If you don't feel like setting up the project structure yourself,
+try out our [dockerized hello world example](https://github.com/liteacz/hello-dockerized-world)
+and get started in three simple steps (really, it's just `git pull`, `cd hello-dockerized-world` and `docker-compose up -d`).
+All you need is [docker installed](https://docs.docker.com/get-docker/) on your machine
+
+I would not count the `cd` as a single step myself, but who would believe in two commands setup?
