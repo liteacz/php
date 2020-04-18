@@ -115,6 +115,6 @@ Build Date => Jan 24 2020 07:10:24
 If you don't feel like setting up the project structure yourself,
 try out our [dockerized hello world example](https://github.com/liteacz/hello-dockerized-world)
 and get started in three simple steps (really, it's just `git pull`, `cd hello-dockerized-world` and `docker-compose up -d`).
-All you need is [docker installed](https://docs.docker.com/get-docker/) on your machine
+All you need is [docker installed](https://docs.docker.com/get-docker/) on your machine.
 
 I would not count the `cd` as a single step myself, but who would believe in two commands setup?
