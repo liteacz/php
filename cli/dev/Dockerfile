@@ -10,6 +10,9 @@ RUN \
     # Cleanup
     && apk del .build-deps
 
+COPY dev/phpdebug.sh /usr/local/bin/phpdebug
+RUN chmod +x /usr/local/bin/phpdebug
+
 COPY dev/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 COPY dev/scripts /var/www/scripts/
