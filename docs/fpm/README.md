@@ -150,7 +150,32 @@ through the code by pressing `F7`, `F8` and `F9`. Read more about the shortcuts 
 
 ### XDebug with VSCode
 
-To be continue...
+With VSCode the setup is similar and also straight forward.
+
+0. Install the [php-debug](https://github.com/felixfbecker/vscode-php-debug) extension.
+
+1. Open launch configurations file. `Run > Open Configurations` and add the configuration.
+
+    ![Add configuration in launch.json](./img/xdebug-vscode-001.png)
+
+2. Add breakpoints
+
+    ![Add breakpoints in VSCode](./img/xdebug-vscode-002.png)
+    
+3. Start debugging (`Run > Start Debugging`).
+
+    This is equivalent to PHPStorm's _Start listening for connections_.
+    
+4. Go to http://localhost:8000?XDEBUG_SESSION_START or use relevant browser extension.
+See "Note on the `XDEBUG_SESSION_START` parameter" in PHPStorm configuration.
+
+    ![Navigating through the code 1](./img/xdebug-vscode-003.png)
+    
+    ![Navigating through the code 2](./img/xdebug-vscode-004.png)
+
+From there you can navigate through the code using `Step into`, `Step over` and `Continue`
+actions similarly like in PHPStorm. Make sure to get familiarize with the keyboard shortcuts associated
+with the given actions to be even faster and more productive.
 
 ## Available environment variables and build arguments
 
