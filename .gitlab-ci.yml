@@ -39,7 +39,6 @@ php:7.4-fpm-dev:
   only:
     - tags
     - web
-    - master
 
 php:7.4-cli:
   stage: baseImages
@@ -51,7 +50,6 @@ php:7.4-cli:
   only:
     - tags
     - web
-    - master
 
 php:7.4-cli-build:
   stage: buildImages
@@ -63,7 +61,6 @@ php:7.4-cli-build:
   only:
     - tags
     - web
-    - master
 
 php:7.4-cli-dev:
   stage: devImages
@@ -75,4 +72,3 @@ php:7.4-cli-dev:
   only:
     - tags
     - web
-    - master
