@@ -10,7 +10,12 @@
 
 ## What is FPM?
 
-TODO: Little bit of theory and references regarding FPM will be here. 
+Quoting from the official [PHP documentation](https://www.php.net/manual/en/install.fpm.php):
+
+> FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation with some additional features (mostly) useful for heavy-loaded sites.
+
+Still have no idea what that means? Do not worry. It's just an efficient way of executing PHP Scripts.
+From developers (the one who writes PHP scripts) point of view there is no difference.
 
 ## Basic usage
 
