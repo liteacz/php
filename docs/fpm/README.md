@@ -52,9 +52,9 @@ repository, so if you feel like so, grab it and work along to get rid of the `ec
 
 ### Project structure
 
-1. Pull the repository and enter the directory
+1. Clone the repository and enter the directory
 
-        $ git pull git@github.com:liteacz/hello-dockerized-world.git
+        $ git clone git@github.com:liteacz/hello-dockerized-world.git
         $ cd hello-dockerized-world
 
 2. Spin up the containers
