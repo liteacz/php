@@ -105,7 +105,7 @@ http://localhost:8000.
     to `1`.
 
     And that's what you'd want most of the time. We want to start the debugging when we want it to.
-    Reaching out for the xdebug documentation, you'll find out, that there [three ways to do that](https://xdebug.org/docs/remote).
+    Reaching out for the xdebug documentation, you'll find out, that there are [three ways to do that](https://xdebug.org/docs/remote).
 
     For our purposes the easiest way to start the debugging is to specify a `XDEBUG_SESSION_START` GET.
     So go to the http://localhost:8000/?XDEBUG_SESSION_START and the debugging process should be initialized
