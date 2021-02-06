@@ -11,6 +11,10 @@ RUN chmod +x \
     /usr/local/bin/lit \
     /usr/local/bin/docker-entrypoint
 
+# This is dynamically replaced based on the selected image
+
+#packages#
+
 RUN lit install fpm
 
 WORKDIR /var/www/
