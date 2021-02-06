@@ -33,6 +33,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
+          context: ./fpm/8.0
           file: ./fpm/8.0/Dockerfile
           push: false
           tags: dancharousek/php:github-actions-test
