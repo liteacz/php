@@ -30,8 +30,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Debug step
-        run:
-          - ls -la
+        run: |
+          ls -la
       -
         name: Build and push
         uses: docker/build-push-action@v2
