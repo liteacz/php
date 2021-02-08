@@ -35,7 +35,7 @@ jobs:
         with:
           context: .
           file: ./fpm/8.0/Dockerfile
-          push: false
+          push: true
           tags: dancharousek/php:github-actions-test
           build-args: |
             arg1=value1
