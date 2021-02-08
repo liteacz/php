@@ -30,15 +30,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        id: docker_build
         uses: docker/build-push-action@v2
         with:
+          context: .
           file: ./fpm/8.0/Dockerfile
-          push: false
+          platforms: linux/amd64,linux/arm64
+          push: true
           tags: dancharousek/php:github-actions-test
-          build-args: |
-            arg1=value1
-            arg2=value2
-      -
-        name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
