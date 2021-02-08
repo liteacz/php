@@ -1,20 +1,14 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the action will run. 
 on:
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  push:
+    tags:
+      - v*
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build-n-deploy-base:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       -
         name: Set up QEMU
@@ -28,12 +22,17 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
       -
         name: Build and push
+        id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: .
           file: ./fpm/8.0/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: dancharousek/php:github-actions-test
+          tags: |
+            dancharousek/php:8.0-fpm
+            dancharousek/php:8.0-fpm-${{ steps.get_version.outputs.VERSION }}
