@@ -32,7 +32,7 @@ function add_php_ext_redis {
         && docker-php-ext-enable redis
 }
 
-function preset_litea {
+function preset_laravel {
     echo "Installing required system libraries and php extensions" \
         && phpize_add \
         && apk add --no-cache --virtual .build-deps \
@@ -139,36 +139,11 @@ case "${1}" in
         shift 1
 
         case "${1}" in
-            "litea-prod")
-                echo "Installing Litea production preset"
+            "laravel")
+                echo "Installing Laravel production preset"
 
-                preset_litea \
+                preset_laravel \
                     && install_package fpm
-
-                if [[ "${?}" != 0 ]]; then
-                    exit 1
-                fi
-                ;;
-
-            "litea-ci")
-                echo "Installing Litea ci preset"
-
-                preset_litea \
-                    && install_package fpm \
-                    && install_package composer
-
-                if [[ "${?}" != 0 ]]; then
-                    exit 1
-                fi
-                ;;
-
-            "litea-dev")
-                echo "Installing Litea development preset"
-
-                preset_litea \
-                    && install_package fpm \
-                    && install_package composer \
-                    && install_package xdebug
 
                 if [[ "${?}" != 0 ]]; then
                     exit 1
