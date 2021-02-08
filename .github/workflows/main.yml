@@ -37,6 +37,7 @@ jobs:
           file: ./fpm/8.0/Dockerfile
           push: true
           tags: dancharousek/php:github-actions-test
+          platforms: linux/amd64,linux/arm64
           build-args: |
             arg1=value1
             arg2=value2
