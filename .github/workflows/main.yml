@@ -41,4 +41,4 @@ jobs:
           push: true
           tags: |
             dancharousek/php:8.0-fpm
-            dancharousek/php:8.0-fpm-${{ GITHUB_REF##*/ }}
+            dancharousek/php:8.0-fpm-${{ github.GITHUB_REF##*/ }}
