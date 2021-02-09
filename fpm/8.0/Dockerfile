@@ -11,6 +11,8 @@ RUN chmod +x \
     /usr/local/bin/lit \
     /usr/local/bin/docker-entrypoint
 
+RUN lit install fpm
+
 WORKDIR /var/www/
 
 ENTRYPOINT [ "docker-entrypoint" ]
