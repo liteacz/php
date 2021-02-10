@@ -1,4 +1,5 @@
 #!/bin/sh
+# lit.sh v1.0.0
 
 # https://google.github.io/styleguide/shellguide.html#s7-naming-conventions
 
@@ -150,4 +151,5 @@ case "${1}" in
                 fi
                 ;;
         esac
+        ;;
 esac

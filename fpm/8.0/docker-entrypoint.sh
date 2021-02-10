@@ -1,4 +1,5 @@
 #!/bin/sh
+# docker-entrypoint.sh v1.0.0
 
 [[ -z "${APP_DIR}" ]] && APP_DIR="/var/www"
 [[ -z "${INIT_DIR}" ]] && INIT_DIR="/opt/litea/init.d"
