@@ -14,7 +14,7 @@ if [[ ! -z "${RUN_INIT_SCRIPTS}" && "${RUN_INIT_SCRIPTS}" == "1" ]]; then
         cp -r "${CUSTOM_SCRIPTS_PATH}/." "${INIT_DIR}"
     fi
 
-    for filename in "${INIT_DIR}/*.sh"; do
+    for filename in "${INIT_DIR}"/*.sh; do
         if [[ -f "${filename}" ]]; then
             sh "${filename}"
 
