@@ -16,11 +16,14 @@ if [[ ! -z "${FPM_USER_ID}" ]] ; then
 
     echo "Creating new user www-data"
 
+    # -D Don't assign password
+    # -H Don't create home directory
+    # -g GECOS field
     adduser \
         -u "${FPM_USER_ID}" \
-        -D \                # Don't assign password
-        -H \                # Don't create home directory
-        -g "" \             # GECOS field
+        -D \
+        -H \
+        -g "" \
     www-data
 
     # Create composer cache directory
