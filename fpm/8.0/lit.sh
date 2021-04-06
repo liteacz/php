@@ -115,7 +115,7 @@ function install_package {
 
     success "${pkg} installed successfully"
 
-    echo "${pkg}" > "${LITEA_INSTALLED_PACKAGES}"
+    echo "${pkg}" >> "${LITEA_INSTALLED_PACKAGES}"
 }
 
 # ================== #
