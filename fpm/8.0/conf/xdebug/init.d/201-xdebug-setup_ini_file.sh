@@ -27,7 +27,7 @@ s/%xdebug_remote_host%/${XDEBUG_REMOTE_HOST}/g
 s/%xdebug_remote_handler%/${XDEBUG_REMOTE_HANDLER}/g
 s/%xdebug_connect_back%/${XDEBUG_REMOTE_CONNECT_BACK}/g
 s/%xdebug_ide_key%/${XDEBUG_IDEKEY}/g
-s/%xdebug_profiller_output_dir%/${XDEBUG_PROFILER_OUTPUT_DIR}/g
+s#%xdebug_profiller_output_dir%#${XDEBUG_PROFILER_OUTPUT_DIR}#g
 s/%xdebug_profiller_output_name%/${XDEBUG_PROFILER_OUTPUT_NAME}/g
 s/%xdebug_profiller_enable_trigger%/${XDEBUG_PROFILER_ENABLE_TRIGGER}/g
 s/%xdebug_profiller_enable%/${XDEBUG_PROFILER_ENABLE}/g
