@@ -15,4 +15,3 @@ RUN chmod +x \
 WORKDIR /var/www/
 
 ENTRYPOINT [ "docker-entrypoint" ]
-CMD ["php-fpm"]
