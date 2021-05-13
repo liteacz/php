@@ -1,4 +1,4 @@
-FROM php:8.0.1-fpm-alpine3.12
+FROM php:8.0.1-cli-alpine3.13
 
 COPY ./fpm/8.0/init.d /opt/litea/init.d
 RUN chmod +x /opt/litea/init.d/*
@@ -11,8 +11,6 @@ COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x \
     /usr/local/bin/lit \
     /usr/local/bin/docker-entrypoint
-
-RUN lit install fpm
 
 WORKDIR /var/www/
 

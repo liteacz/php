@@ -142,9 +142,7 @@ case "${1}" in
         case "${1}" in
             "laravel")
                 echo "Installing Laravel production preset"
-
-                preset_laravel \
-                    && install_package fpm
+                preset_laravel
 
                 if [[ "${?}" != 0 ]]; then
                     exit 1
