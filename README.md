@@ -1,10 +1,11 @@
-# PHP-FPM - Image ready to go
+# PHP images ready to go
 
-## ⚠ This version is still under development ⚠
+## PHP 8.1
 
-The new major release 2.x is still under active development and is not recommended for production use yet.
+You are browsing documentation for PHP 8.1.
 
-Please see the documentation for the PHP
+You might be also looking for
+- [8.0](https://github.com/liteacz/php/tree/8.0)
 - [7.4](https://github.com/liteacz/php/tree/7.4)
 - [7.3](https://github.com/liteacz/php/tree/7.3)
 
@@ -74,7 +75,7 @@ services:
       - php-fpm
     
   php-fpm:
-    image: liteacz/php:8.0-fpm
+    image: liteacz/php:8.1-fpm
       environment:
         FPM_ROOT_DIR: public
       volumes:
@@ -109,7 +110,7 @@ If you see "Up ..." within the "STATUS" column you should be able to navigate to
 
 ### Using CLI
 
-The CLI variant is not ready yet for PHP 8.0 checkout [the previous version](https://github.com/liteacz/php/tree/7.4).
+TODO
 
 ## Demo time
 
