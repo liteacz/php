@@ -9,7 +9,7 @@
 mkdir -p "${APP_DIR}"
 cd "${APP_DIR}"
 
-if [ ! -z "${RUN_INIT_SCRIPTS}" && "${RUN_INIT_SCRIPTS}" = "1" ]; then
+if [ ! -z "${RUN_INIT_SCRIPTS}" ] && [ "${RUN_INIT_SCRIPTS}" = "1" ]; then
     if [ -d "${CUSTOM_SCRIPTS_PATH}" ]; then
         cp -r "${CUSTOM_SCRIPTS_PATH}/." "${INIT_DIR}"
     fi
