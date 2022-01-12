@@ -6,81 +6,37 @@
 CONTAINER_INIT_DIRECTORY="/opt/litea/init.d"
 LITEA_INSTALLED_PACKAGES="/opt/litea/installed_packages.txt"
 
-function phpize_add {
-    apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS
-}
-
-function phpize_remove {
-    apk del --no-cache .phpize-deps
-}
-
-function add_php_ext_gd {
-    echo "Installing GD php extension" \
-        && apk add --no-cache \
-            libpng-dev \
-            freetype-dev \
-            libjpeg-turbo-dev \
-        && docker-php-ext-configure gd \
-            --with-jpeg \
-            --with-freetype \
-        && NPROC=$(getconf _NPROCESSORS_ONLN) \
-        && docker-php-ext-install -j${NPROC} gd
-}
-
-function add_php_ext_redis {
-    echo "Installing redis php extension" \
-        && pecl install redis \
-        && docker-php-ext-enable redis
-}
-
-function preset_laravel {
+preset_laravel () {
     echo "Installing required system libraries and php extensions" \
-        && phpize_add \
-        && apk add --no-cache --virtual .build-deps \
-            zlib-dev \
-            oniguruma-dev \
-        && apk add --no-cache --virtual .persistent-deps \
-            libzip-dev \
-            libxml2-dev \
-        && docker-php-ext-install \
-            bcmath \
-            calendar \
-            opcache \
-            pdo_mysql \
-            zip \
-        && add_php_ext_redis \
-        && add_php_ext_gd \
-        && echo "Cleaning build dependencies" \
-        && apk del --no-cache .build-deps \
-        && phpize_remove
+        && install-php-extensions bcmath calendar opcache pdo_mysql zip redis gd
 }
 
 # ================= #
 # ===  HELPERS  === #
 # ================= #
 
-function error {
+error () {
     RED='\033[0;31m'
     NC='\033[0m' # No Color
 
     echo -e "${RED}ERROR${NC}: ${1}"
 }
 
-function warning {
+warning () {
     ORANGE='\033[0;33m'
     NC='\033[0m' # No Color
 
     echo -e "${ORANGE}WARNING${NC}: ${1}"
 }
 
-function success {
+success () {
     GREEN='\033[1;32m'
     NC='\033[0m' # No Color
 
     echo -e "${GREEN}SUCCESS${NC}: ${1}"
 }
 
-function install_package {
+install_package () {
     pkg="${1}"
     touch "${LITEA_INSTALLED_PACKAGES}"
 

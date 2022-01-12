@@ -1,21 +1,21 @@
 #!/bin/sh
 
+version="8.1"
+
 case "${1}" in
     "build-local")
         type="${2}"
-        version="${3}"
-        distro="${4}"
+        distro="${3}"
 
         docker build \
             -t "liteacz/php:${version}-${type}-local" \
-            -f "${type}/${version}/Dockerfile" \
+            -f "${type}/${distro}.Dockerfile" \
         .
     ;;
 
     "run-local")
         type="${2}"
-        version="${3}"
-        distro="${4}"
+        distro="${3}"
         shift 3
         cmd=${@}
 
