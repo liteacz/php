@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         type: ["cli", "fpm"]
-        distro: ["alpine", "debian-buster", "debian-stretch"]
+        distro: ["alpine-3.15", "debian-buster"]
     runs-on: ubuntu-latest
     steps:
       -
