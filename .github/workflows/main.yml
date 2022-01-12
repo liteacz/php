@@ -7,7 +7,7 @@ on:
       - v*
 
 jobs:
-  build-fpm-base:
+  build-fpm-alpine:
     runs-on: ubuntu-latest
     steps:
       -
@@ -30,14 +30,14 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          file: ./fpm/Dockerfile
+          file: ./fpm/alpine.Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            liteacz/php:8.1-fpm
-            liteacz/php:8.1-fpm-${{ steps.get_version.outputs.VERSION }}
+            liteacz/php:8.1-fpm-alpine
+            liteacz/php:8.1-fpm-alpine-${{ steps.get_version.outputs.VERSION }}
 
-  build-cli-base:
+  build-cli-alpine:
     runs-on: ubuntu-latest
     steps:
       -
@@ -60,9 +60,69 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          file: ./cli/Dockerfile
+          file: ./cli/alpine.Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            liteacz/php:8.1-cli
-            liteacz/php:8.1-cli-${{ steps.get_version.outputs.VERSION }}
+            liteacz/php:8.1-cli-alpine
+            liteacz/php:8.1-cli-alpine-${{ steps.get_version.outputs.VERSION }}
+
+  build-fpm-debian:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          file: ./fpm/debian.Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            liteacz/php:8.1-fpm-debian
+            liteacz/php:8.1-fpm-debian-${{ steps.get_version.outputs.VERSION }}
+
+  build-cli-debian:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          file: ./cli/debian.Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            liteacz/php:8.1-cli-debian
+            liteacz/php:8.1-cli-debian-${{ steps.get_version.outputs.VERSION }}
