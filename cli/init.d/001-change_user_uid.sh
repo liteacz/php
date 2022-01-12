@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ ! -z "${USER_ID}" ]] ; then
+if [ ! -z "${USER_ID}" ] ; then
     echo "USER_ID specified: ${USER_ID}"
 
     if id www-data >/dev/null 2>&1; then
