@@ -1,5 +1,6 @@
 FROM php:8.1.1-fpm-buster
 
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY ./fpm/init.d /opt/litea/init.d
 RUN chmod +x /opt/litea/init.d/*
 
