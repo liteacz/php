@@ -50,21 +50,21 @@ install_package () {
 
     pkg_conf_path="/opt/litea/conf/${pkg}"
 
-    if [[ ! -d "${pkg_conf_path}" ]]; then
+    if [ ! -d "${pkg_conf_path}" ]; then
         error "Configuration folder for the package ${pkg} was not found"
         exit 1
     fi
 
     pkg_install_script="${pkg_conf_path}/install.sh"
 
-    if [[ ! -f "${pkg_install_script}" ]]; then
+    if [ ! -f "${pkg_install_script}" ]; then
         error "Installation script for the package ${pkg} was not found"
         exit 1
     fi
 
     sh "${pkg_install_script}" "${CONTAINER_INIT_DIRECTORY}"
 
-    if [[ "${?}" != 0 ]]; then
+    if [ "${?}" != 0 ]; then
         error "${pkg} installation failed"
         exit 1
     fi
@@ -86,7 +86,7 @@ case "${1}" in
         do
             install_package "${pkg}"
 
-            if [[ "${?}" != 0 ]]; then
+            if [ "${?}" != 0 ]; then
                 exit 1
             fi
         done
@@ -100,7 +100,7 @@ case "${1}" in
                 echo "Installing Laravel production preset"
                 preset_laravel
 
-                if [[ "${?}" != 0 ]]; then
+                if [ "${?}" != 0 ]; then
                     exit 1
                 fi
                 ;;
