@@ -26,4 +26,8 @@ if [ ! -z "${RUN_INIT_SCRIPTS}" ] && [ "${RUN_INIT_SCRIPTS}" = "1" ]; then
     done
 fi
 
-exec "${@}"
+if [ ! -z "${RUN_AS}" ] ; then
+    exec su - "${RUN_AS}" sh -c "${@}"
+else
+    exec "${@}"
+fi
