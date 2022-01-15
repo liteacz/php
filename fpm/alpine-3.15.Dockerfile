@@ -7,6 +7,7 @@ RUN chmod +x /opt/litea/init.d/*
 COPY ./fpm/conf /opt/litea/conf
 
 COPY ./lit.sh /usr/local/bin/lit
+COPY ./loop.sh /usr/local/bin/loop
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
 RUN chmod +x \
