@@ -20,10 +20,10 @@ if [ ! -z "${FPM_USER_ID}" ] ; then
     # -H Don't create home directory
     # -g GECOS field
     adduser \
-        -u "${FPM_USER_ID}" \
-        -D \
-        -H \
-        -g "" \
+        --uid "${FPM_USER_ID}" \
+        --disabled-password \
+        --no-create-home \
+        --gecos "" \
     www-data
 
     # Create composer cache directory
