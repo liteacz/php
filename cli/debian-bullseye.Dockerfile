@@ -1,4 +1,4 @@
-FROM php:8.1.1-cli-bullseye
+FROM php:8.1.14-cli-bullseye
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY ./cli/init.d /opt/litea/init.d

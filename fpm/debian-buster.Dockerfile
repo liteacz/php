@@ -1,4 +1,4 @@
-FROM php:8.1.1-fpm-buster
+FROM php:8.1.14-fpm-buster
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY ./fpm/init.d /opt/litea/init.d
