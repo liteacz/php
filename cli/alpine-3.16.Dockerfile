@@ -1,10 +1,10 @@
-FROM php:8.1.13-cli-alpine3.15
+FROM php:8.1.14-cli-alpine3.16
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
-COPY ./fpm/init.d /opt/litea/init.d
+COPY ./cli/init.d /opt/litea/init.d
 RUN chmod +x /opt/litea/init.d/*
 
-COPY ./fpm/conf /opt/litea/conf
+COPY ./cli/conf /opt/litea/conf
 
 COPY ./lit.sh /usr/local/bin/lit
 COPY ./loop.sh /usr/local/bin/loop
@@ -14,9 +14,6 @@ RUN chmod +x \
     /usr/local/bin/lit \
     /usr/local/bin/docker-entrypoint
 
-RUN lit install fpm
-
 WORKDIR /var/www/
 
 ENTRYPOINT [ "docker-entrypoint" ]
-CMD ["php-fpm"]
